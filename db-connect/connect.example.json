@@ -1,0 +1,5 @@
+{
+  "atlas": {
+    "connect-string": "mongodb+srv://<USERNAME>:<PASSWORD>@<CLUSTER_DEETS>.mongodb.net/?retryWrites=true&w=majority"
+  }
+}

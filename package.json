@@ -1,0 +1,14 @@
+{
+  "name": "whats-for-tea",
+  "version": "1.0.0",
+  "description": "A simple meal planner so you can answer the question \"what's for tea?\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^6.6.5"
+  }
+}
