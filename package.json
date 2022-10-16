@@ -2,7 +2,7 @@
   "name": "whats-for-tea",
   "version": "1.0.0",
   "description": "A simple meal planner so you can answer the question \"what's for tea?\"",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,5 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "mongoose": "^6.6.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
   }
 }
