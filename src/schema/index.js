@@ -106,6 +106,7 @@ measurementSchema.pre("findOneAndUpdate", function (next) {
 });
 
 module.exports = {
+  equipmentItemSchema,
   ingredientSchema,
   measurementSchema,
   mealPartSchema,

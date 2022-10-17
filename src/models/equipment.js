@@ -1,9 +1,11 @@
+const { model } = require("mongoose");
 const { equipmentItemSchema } = require("../schema");
 
 // set up model
 const EquipmentItem = model("EquipmentItem", equipmentItemSchema);
 
-async function createOneEquipmentItem(name) {
+async function createOneEquipmentItem(equipmentItem) {
+  const { name } = equipmentItem;
   const query = { name };
   const options = {
     upsert: true,
@@ -13,3 +15,7 @@ async function createOneEquipmentItem(name) {
 
   return EquipmentItem.findOneAndUpdate(query, { name }, options);
 }
+
+module.exports = {
+  createOneEquipmentItem,
+};
