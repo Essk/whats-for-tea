@@ -4,7 +4,8 @@
   "description": "A simple meal planner so you can answer the question \"what's for tea?\"",
   "main": "src/index.js",
   "scripts": {
-    "setup:measurements": "node scripts/setup-measurements.js",
+    "create:measurement": "node scripts/create-measurement.js",
+    "setup:measurements": "node scripts/common-measurements.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
