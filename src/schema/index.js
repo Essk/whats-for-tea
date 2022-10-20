@@ -50,25 +50,46 @@ const ingredientSchema = new Schema(
   }
 );
 
-const mealPartSchema = new Schema({
-  name: String,
-  method: [
-    {
-      stepText: String,
-      beforeStart: Boolean,
-      beforeServe: Boolean,
+const mealPartSchema = new Schema(
+  {
+    name: String,
+    method: [
+      {
+        stepIndex: Number,
+        stepText: String,
+        beforeStart: Boolean,
+        beforeServe: Boolean,
+      },
+    ],
+    duration: Number,
+    recipeIngredients: [
+      {
+        ingredient: ObjectId,
+        measurement: ObjectId,
+        amount: Number,
+      },
+    ],
+    equipment: [ObjectId],
+  },
+  {
+    statics: {
+      async findByName(_name) {
+        const result = await this.findOne({
+          name: new RegExp(`^${_name}$`, "i"),
+        }).exec();
+        return result;
+      },
+      async findIdByName(_name) {
+        const result = await this.findByUnitName(_name);
+        if (result?._id) {
+          return result._id;
+        }
+        console.warn(`no meal part found matching ${_name}`);
+        return null;
+      },
     },
-  ],
-  duration: Number,
-  recipeIngredients: [
-    {
-      ingredient: ObjectId,
-      measurement: ObjectId,
-      amount: Number,
-    },
-  ],
-  equipment: [ObjectId],
-});
+  }
+);
 
 const measurementSchema = new Schema(
   {
