@@ -4,6 +4,7 @@
   "description": "A simple meal planner so you can answer the question \"what's for tea?\"",
   "main": "src/index.js",
   "scripts": {
+    "server": "node src/server/index.js",
     "create:equipment-item": "node scripts/create-equipment-item.js",
     "create:ingredient": "node scripts/create-ingredient.js",
     "create:measurement": "node scripts/create-measurement.js",
@@ -13,7 +14,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "mongoose": "^6.6.5"
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5",
+    "slug": "^8.2.2"
   },
   "devDependencies": {
     "eslint": "^8.25.0",
