@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 const { excludeNullValues } = require("../utils");
 const { Schema, ObjectId } = mongoose;
+const slug = require("slug");
 
 const equipmentItemSchema = new Schema(
   {
+    slug: String,
     name: String,
   },
   {
@@ -52,6 +54,7 @@ const ingredientSchema = new Schema(
 
 const mealPartSchema = new Schema(
   {
+    slug: String,
     name: String,
     method: [
       {
@@ -93,6 +96,7 @@ const mealPartSchema = new Schema(
 
 const measurementSchema = new Schema(
   {
+    slug: String,
     unitName: String,
     notationSingular: String,
     notationPlural: String,
@@ -118,6 +122,46 @@ const measurementSchema = new Schema(
     },
   }
 );
+
+equipmentItemSchema.pre("findOneAndUpdate", function (next) {
+  let update = { ...this.getUpdate() };
+  if (update?.slug) {
+    next();
+  }
+  update.slug = slug(update.name);
+  this.setUpdate(update);
+  next();
+});
+
+ingredientSchema.pre("findOneAndUpdate", function (next) {
+  if (update?.slug) {
+    next();
+  }
+  let update = { ...this.getUpdate() };
+  update.slug = slug(update.name);
+  this.setUpdate(update);
+  next();
+});
+
+mealPartSchema.pre("findOneAndUpdate", function (next) {
+  if (update?.slug) {
+    next();
+  }
+  let update = { ...this.getUpdate() };
+  update.slug = slug(update.name);
+  this.setUpdate(update);
+  next();
+});
+
+measurementSchema.pre("findOneAndUpdate", function (next) {
+  if (update?.slug) {
+    next();
+  }
+  let update = { ...this.getUpdate() };
+  update.slug = slug(update.name);
+  this.setUpdate(update);
+  next();
+});
 
 measurementSchema.pre("findOneAndUpdate", function (next) {
   let update = { ...this.getUpdate() };
