@@ -4,6 +4,7 @@
   "description": "A simple meal planner so you can answer the question \"what's for tea?\"",
   "main": "src/index.js",
   "scripts": {
+    "dev:server": "nodemon src/server/index.js",
     "server": "node src/server/index.js",
     "create:equipment-item": "node scripts/create-equipment-item.js",
     "create:ingredient": "node scripts/create-ingredient.js",
@@ -22,6 +23,7 @@
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
     "prettier": "^2.7.1"
   }
 }
