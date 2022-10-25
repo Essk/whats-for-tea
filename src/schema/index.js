@@ -30,6 +30,7 @@ const equipmentItemSchema = new Schema(
 
 const ingredientSchema = new Schema(
   {
+    slug: String,
     name: String,
   },
   {
@@ -134,10 +135,10 @@ equipmentItemSchema.pre("findOneAndUpdate", function (next) {
 });
 
 ingredientSchema.pre("findOneAndUpdate", function (next) {
+  let update = { ...this.getUpdate() };
   if (update?.slug) {
     next();
   }
-  let update = { ...this.getUpdate() };
   update.slug = slug(update.name);
   this.setUpdate(update);
   next();
