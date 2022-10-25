@@ -6,6 +6,9 @@ const EquipmentItem = model("EquipmentItem", equipmentItemSchema);
 
 async function createOneEquipmentItem(equipmentItem) {
   const { name } = equipmentItem;
+  if (!name) {
+    return {};
+  }
   const query = { name };
   const options = {
     upsert: true,
@@ -16,6 +19,21 @@ async function createOneEquipmentItem(equipmentItem) {
   return EquipmentItem.findOneAndUpdate(query, { name }, options);
 }
 
+async function deleteEquipmentItem(slug) {
+  return EquipmentItem.findOneAndDelete({ slug });
+}
+
+async function getEquipmentItem(slug) {
+  return EquipmentItem.findOne({ slug });
+}
+
+async function getEquipmentItems() {
+  return EquipmentItem.find();
+}
+
 module.exports = {
+  getEquipmentItem,
+  getEquipmentItems,
+  deleteEquipmentItem,
   createOneEquipmentItem,
 };
