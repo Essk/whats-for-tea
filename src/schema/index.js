@@ -145,10 +145,10 @@ ingredientSchema.pre("findOneAndUpdate", function (next) {
 });
 
 mealPartSchema.pre("findOneAndUpdate", function (next) {
+  let update = { ...this.getUpdate() };
   if (update?.slug) {
     next();
   }
-  let update = { ...this.getUpdate() };
   update.slug = slug(update.name);
   this.setUpdate(update);
   next();
