@@ -28,6 +28,21 @@ async function createOneMeasurement(measurement) {
   return Measurement.findOneAndUpdate(query, measurementToUpdate, options);
 }
 
+async function deleteMeasurement(slug) {
+  return Measurement.findOneAndDelete({ slug });
+}
+
+async function getMeasurement(slug) {
+  return Measurement.findOne({ slug });
+}
+
+async function getMeasurements() {
+  return Measurement.find();
+}
+
 module.exports = {
+  getMeasurement,
+  getMeasurements,
+  deleteMeasurement,
   createOneMeasurement,
 };

@@ -155,11 +155,11 @@ mealPartSchema.pre("findOneAndUpdate", function (next) {
 });
 
 measurementSchema.pre("findOneAndUpdate", function (next) {
+  let update = { ...this.getUpdate() };
   if (update?.slug) {
     next();
   }
-  let update = { ...this.getUpdate() };
-  update.slug = slug(update.name);
+  update.slug = slug(update.unitName);
   this.setUpdate(update);
   next();
 });

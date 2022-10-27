@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ingredient = require("./ingredient");
 const equipment = require("./equipment");
+const measurement = require("./measurement");
 const mongoose = require("mongoose");
 const { atlas } = require("../../../db-connect/connect.json");
 const { "connect-string": connectString } = atlas;
@@ -13,5 +14,6 @@ router.use(async (req, res, next) => {
 
 router.use("/ingredient", ingredient);
 router.use("/equipment", equipment);
+router.use("/measurement", measurement);
 
 module.exports = router;
