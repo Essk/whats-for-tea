@@ -4,7 +4,7 @@
   "description": "A simple meal planner so you can answer the question \"what's for tea?\"",
   "main": "src/index.js",
   "scripts": {
-    "dev:server": "nodemon src/server/index.js",
+    "dev:server": "nodemon src/app/index.js",
     "server": "node src/server/index.js",
     "create:equipment-item": "node scripts/create-equipment-item.js",
     "create:ingredient": "node scripts/create-ingredient.js",
