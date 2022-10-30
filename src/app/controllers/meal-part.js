@@ -14,7 +14,14 @@ module.exports = function (options) {
     const collection = Collection(url);
 
     const mealParts = await collection.getDocuments("meal-part");
-    res.render("meal-parts", { mealParts: mealParts });
+    res.render("pages/meal-parts", {
+      title: "Meal Parts",
+      mealParts: mealParts,
+    });
+  });
+
+  router.route("/new").get(async (req, res) => {
+    res.render("pages/new-meal-part", { title: "New Meal Part", mealPart: {} });
   });
 
   router.route("/:slug").get(async (req, res) => {
@@ -24,7 +31,9 @@ module.exports = function (options) {
       "meal-part",
       req?.params?.slug
     );
-    res.render("meal-part", { mealPart: mealPart });
+    const { name } = mealPart;
+    res.render("pages/meal-part", { title: name, mealPart: mealPart });
   });
+
   return router;
 };

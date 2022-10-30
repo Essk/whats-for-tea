@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head'); %>
+<body>
+  <%- include('../partials/header'); %>
+
+  <!--
+    slug: String,
+    name: String,
+    method: [
+      {
+        stepIndex: Number,
+        stepText: String,
+        beforeStart: Boolean,
+        beforeServe: Boolean,
+      },
+    ],
+    duration: Number,
+    recipeIngredients: [
+      {
+        ingredient: ObjectId,
+        measurement: ObjectId,
+        amount: Number,
+      },
+    ],
+    equipment: [ObjectId],
+  
+  -->
+
+    <%= mealPart.name %>
+
+</body>
+</html>
