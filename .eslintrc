@@ -3,7 +3,8 @@
     "prettier"
   ],
   "extends": [
-    "prettier"
+    "prettier",
+    "plugin:vue/vue3-recommended",
   ],
   "rules": {
     // Allow Prettier to throw errors via ESLint
