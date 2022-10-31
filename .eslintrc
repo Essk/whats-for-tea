@@ -14,5 +14,8 @@
   },
   "env": {
     "es6": true
-  }
+  },
+  "ignorePatterns": [
+    "vite.config.js"
+  ]
 }

@@ -4,6 +4,9 @@
   "description": "A simple meal planner so you can answer the question \"what's for tea?\"",
   "main": "src/index.js",
   "scripts": {
+    "dev:client": "vite",
+    "build:client": "vite build",
+    "preview:client": "vite preview",
     "dev:server": "nodemon src/app/index.js",
     "server": "node src/server/index.js",
     "create:equipment-item": "node scripts/create-equipment-item.js",
@@ -19,13 +22,18 @@
     "express": "^4.18.2",
     "mongoose": "^6.6.5",
     "node-fetch": "^2.6.7",
-    "slug": "^8.2.2"
+    "slug": "^8.2.2",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.20",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "@vitejs/plugin-vue-jsx": "^2.0.1",
+    "vite": "^3.1.8"
   }
 }
