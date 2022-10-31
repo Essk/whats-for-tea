@@ -21,7 +21,18 @@ module.exports = function (options) {
   });
 
   router.route("/new").get(async (req, res) => {
-    res.render("pages/new-meal-part", { title: "New Meal Part", mealPart: {} });
+    const url = apiUrl(req);
+    const collection = Collection(url);
+    const ingredients = await collection.getDocuments("ingredient");
+    const equipment = await collection.getDocuments("equipment");
+    const data = { ingredients, equipment };
+    res.render("pages/new-meal-part", {
+      title: "New Meal Part",
+      mealPart: {},
+      equipment,
+      ingredients,
+      _data: JSON.stringify(data),
+    });
   });
 
   router.route("/:slug").get(async (req, res) => {

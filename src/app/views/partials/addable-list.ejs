@@ -1,0 +1,15 @@
+<div id="<%= name %>">
+  <% if(list?.length) { %>
+    <ul id="addable-<%= name%>-list">
+      <% list.forEach(item => { %>
+        <li><%- item.content %></li>
+      <%})%>
+    </ul>
+  <% } %>
+  <select name="<%= name %>" id="<%= name %>-select">
+    <% options.forEach(option => { %>
+      <option value="<%= option.value %>"><%= option.text %></option>
+    <% }); %>
+  </select>
+  <label for="<%= name %>-select"><%= name %></label>
+</div>

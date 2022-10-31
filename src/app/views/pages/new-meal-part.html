@@ -5,13 +5,18 @@
     <%- include('../partials/header'); %>
     <div id="meal-part">
       <form action="">
-        <div id="name">
-          <input id="name-input">
-          <label for="name-input">Name</label>
-        </div>
+        <%- include('../partials/input-text', {name: 'name'}) %>
+        <%- include('../partials/input-text', {name: 'duration'}) %> 
+        <%- include('../partials/input-select', { name: 'equipment', options:
+        equipment.map(item => { return { value: item._id, text: item.name } }),
+        }) %>
+        <%- include('../partials/input-select', { name: 'ingredients',
+        options: ingredients.map(item => { return { value: item._id, text:
+        item.name } }), }) %>
       </form>
     </div>
   </body>
+  <%- include('../partials/data'); %>
   <script>
     const MealPart = {
       _name: "",
@@ -20,65 +25,66 @@
       _recipeIngredients: [],
       _method: [],
       name(name) {
-        if (typeof name !== 'string') {
+        if (typeof name !== "string") {
           return this._name;
         }
         this._name = name;
         return this;
       },
-      duration(duration){
-        if (typeof duration !== 'number') {
+      duration(duration) {
+        if (typeof duration !== "number") {
           return this._duration;
         }
         this._duration = duration;
         return this;
       },
-      equipment(){
-       return this._equipment
+      equipment() {
+        return this._equipment;
       },
-      addEquipment(objectId){
+      addEquipment(objectId) {
         this._equipment.push(objectId);
       },
-      removeEquipment(objectId){
+      removeEquipment(objectId) {
         const idx = this._equipment.indexOf(objectId);
-        if(idx >= 0){
+        if (idx >= 0) {
           this._equipment = this._equipment.splice(idx, 1);
         }
         return this._equipment;
       },
-      recipeIngredients(){
+      recipeIngredients() {
         return this._recipeIngredients;
       },
-      addRecipeIngredient(ingredient){
+      addRecipeIngredient(ingredient) {
         this._recipeIngredients.push(ingredient);
       },
-      removeRecipeIngredient(ingredientObj){
+      removeRecipeIngredient(ingredientObj) {
         const { ingredient: ingredientId } = ingredientObj;
-        const idx = this._recipeIngredients.findIndex(i => i.ingredient === ingredientId);
-        if(idx >= 0){
+        const idx = this._recipeIngredients.findIndex(
+          (i) => i.ingredient === ingredientId
+        );
+        if (idx >= 0) {
           this._recipeIngredients = this._recipeIngredients.splice(idx, 1);
         }
         return this._recipeIngredients;
       },
-      method(){
+      method() {
         return this._method;
       },
-      sortMethodSteps(){
+      sortMethodSteps() {
         this._method = this._method.sort((a, b) => {
           // this is a guess: check and tweak
           return a.stepIndex >= b.stepIndex ? -1 : 1;
         });
         return this._method;
       },
-      addMethodStep(step){
+      addMethodStep(step) {
         this._method.push(step);
         this.sortMethodSteps();
         return this._method;
       },
-      async save(){
-        const response = await fetch('http://localhost:3000/api/meal-part/new') 
-      }
-
+      async save() {
+        const response = await fetch("http://localhost:3000/api/meal-part/new");
+      },
     };
     const nameInput = document.querySelector("#name-input");
 
