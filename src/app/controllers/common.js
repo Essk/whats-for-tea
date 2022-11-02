@@ -10,6 +10,7 @@ module.exports = (apiUrl) => {
         return [];
       }
       const url = `${apiUrl}${collectionSlug}`;
+      console.log(url)
       const response = await fetch(url);
       return response.json();
     },

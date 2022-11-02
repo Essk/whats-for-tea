@@ -1,14 +1,14 @@
 {
   "plugins": [
-    "prettier"
+     "prettier"
   ],
   "extends": [
-    "prettier",
+    // "prettier",
     "plugin:vue/vue3-recommended",
   ],
   "rules": {
     // Allow Prettier to throw errors via ESLint
-    "prettier/prettier": "error"
+    // "prettier/prettier": "error"
   },
   "parserOptions": {
     "ecmaVersion": "latest"

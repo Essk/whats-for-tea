@@ -1,5 +1,6 @@
 const { response } = require("express");
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const api = require("./api");
 const fetch = require("node-fetch");
@@ -13,6 +14,8 @@ app.engine(".html", require("ejs").__express);
 app.set("views", path.join(__dirname, "views"));
 
 app.set("view engine", "html");
+
+app.use(cors());
 
 app.use("/meal-part", mealPartRoute({ port }));
 
