@@ -17,7 +17,7 @@ router
     res.json(await getMealPart(req?.params?.slug));
   })
   .put(async (req, res) => {
-    res.json(await createOneMealPart(req.query));
+    res.json(await createOneMealPart(req.body));
   })
   .delete((req, res) => {
     res.json(deleteMealPart(req?.params?.slug));

@@ -9,6 +9,8 @@ const mealPartRoute = require("./controllers/meal-part");
 const app = express();
 const port = 3000;
 
+app.use(express.json())
+
 app.engine(".html", require("ejs").__express);
 
 app.set("views", path.join(__dirname, "views"));
